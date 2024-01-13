@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FindDupCard : Minigame
 {
-    public override void GameStart()
-    {
-        throw new System.NotImplementedException();
-    }
+    //public override void GameStart()
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 }

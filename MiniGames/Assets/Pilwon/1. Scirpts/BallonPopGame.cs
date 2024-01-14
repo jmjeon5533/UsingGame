@@ -43,15 +43,15 @@ public class BallonPopGame : MonoBehaviour
         instance = this;    
     }
 
+    private void Start()
+    {
+        Init();
+    }
+
     private void Update()
     {
         stages[stageLevel].timer -= Time.deltaTime;
         timeSlider.value = stages[stageLevel].timer / stages[stageLevel].maxTimter;
-    }
-
-    private void Start()
-    {
-        Init();
     }
 
     public void Init()

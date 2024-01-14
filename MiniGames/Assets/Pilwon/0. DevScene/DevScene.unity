@@ -2660,7 +2660,7 @@ MonoBehaviour:
       text: {fileID: 0}
       textString: 42
   stageLevel: 0
-  hpSlider: {fileID: 1376300759}
+  timeSlider: {fileID: 1376300759}
 --- !u!4 &1637405062
 Transform:
   m_ObjectHideFlags: 0

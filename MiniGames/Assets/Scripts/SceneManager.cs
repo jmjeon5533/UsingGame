@@ -10,6 +10,7 @@ public class GameInfo
 {
     public int sceneIndex;
     public string gameExplain;
+    public Color panelColor;
 }
 public class SceneManager : MonoBehaviour
 {
@@ -61,6 +62,8 @@ public class SceneManager : MonoBehaviour
 
         // Show explanation text
         explainText.text = gameOrder[curOrder].gameExplain;
+        explainImg.color = gameOrder[curOrder].panelColor;
+        scoreText.gameObject.SetActive(true);
 
         // Scale up explanation image
         yield return explainImg.rectTransform.DOSizeDelta(new Vector2(1920, 300), 0.5f).SetUpdate(true).WaitForCompletion();

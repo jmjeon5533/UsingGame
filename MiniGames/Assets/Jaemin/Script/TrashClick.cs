@@ -24,17 +24,22 @@ public class TrashClick : MonoBehaviour
 
     public TrashInfo[] trashData;
     [SerializeField] Trash trash;
+    [SerializeField] Image TimeSlider;
     SpriteRenderer trashImg;
 
-    public int Maxtime;
-    int curtime;
+    float Maxtime;
+    float curtime;
 
     bool isMove = false;
+    bool isEnd = false;
 
     private void Start()
     {
         trashImg = trash.GetComponent<SpriteRenderer>();
         ResetTrash();
+        Maxtime = 10;
+        curtime = Maxtime;
+
     }
     public void ResetTrash()
     {
@@ -43,6 +48,11 @@ public class TrashClick : MonoBehaviour
         trashImg.sprite = trashData[rand].trashSprite;
         trash.transform.position = new Vector2(0, -6);
         trash.transform.DOMoveY(-3.5f, 0.5f);
+    }
+    void ResetTimer()
+    {
+        Maxtime -= 0.2f;
+        curtime = Maxtime;
     }
 
     private void Update()
@@ -61,16 +71,24 @@ public class TrashClick : MonoBehaviour
                     trashCan.Move();
                     if (trashCan.recycleType == trash.trashType)
                     {
-                        SceneManager.instance.AddScore(100);
+                        if (SceneManager.instance != null) SceneManager.instance.AddScore(100);
+                        ResetTimer();
                     }
                     else
                     {
                         print("실패");
-                        curtime -= 5;
+                        curtime -= Maxtime / 2;
                     }
                 }
             }
         }
+        curtime -= Time.deltaTime;
+        if (curtime <= 0 && !isEnd)
+        {
+            isEnd = true;
+            SceneManager.instance.NextGame();
+        }
+        TimeSlider.fillAmount = curtime / Maxtime;
     }
     IEnumerator Move(Vector2 pos)
     {

@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &307438452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -680,15 +680,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOrder:
   - sceneIndex: 1
-    gameExplain: 1
+    gameExplain: "\uBD84\uB9AC\uC218\uAC70"
+    panelColor: {r: 0.5153347, g: 1, b: 0.4666667, a: 1}
   - sceneIndex: 2
-    gameExplain: 2
+    gameExplain: "\uC18C\uD3EC \uBD80\uCE58\uAE30"
+    panelColor: {r: 1, g: 0.9598177, b: 0.4481132, a: 1}
   - sceneIndex: 3
-    gameExplain: 3
+    gameExplain: "\uACE0\uC720\uBC88\uD638 \uAE30\uC5B5"
+    panelColor: {r: 1, g: 0.5272645, b: 0.427451, a: 1}
   - sceneIndex: 4
     gameExplain: 4
+    panelColor: {r: 0.41037738, g: 0.9480737, b: 1, a: 1}
   - sceneIndex: 5
     gameExplain: 5
+    panelColor: {r: 0.82253987, g: 0.514151, b: 1, a: 1}
   fadeObj: {fileID: 32749752}
   explainImg: {fileID: 2029044936}
   explainText: {fileID: 1441145327}

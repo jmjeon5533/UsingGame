@@ -39,6 +39,7 @@ public class BallonParent : MonoBehaviour
                 BallonPopGame.instance.Init();
                 BallonPopGame.instance.isCurStageClear = true;
                 BallonPopGame.instance.isConveyorMove = true;
+                SceneManager.instance.AddScore(500);
             }
         }
     }

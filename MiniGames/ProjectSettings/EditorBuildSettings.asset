@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Jaemin/Scene/TrashDivision.unity
     guid: da7013cd754c8b84b906a93b8a7f9375
   - enabled: 1
-    path: Assets/Pilwon/0. DevScene/DevScene.unity
-    guid: 0edffe8832b54a84c86afe98e40081dd
+    path: Assets/Pilwon/0. DevScene/PGameScene.unity
+    guid: a79711e8e4f046241bc0378074a79aba
   - enabled: 1
     path: Assets/Scenes/RMNM.unity
     guid: da9d2846fb2a5644db11ce229df527b7

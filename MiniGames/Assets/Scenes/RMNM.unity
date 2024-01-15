@@ -545,6 +545,9 @@ MonoBehaviour:
   Inputvalue: {fileID: 538686165}
   ShowTime: 1.5
   imgTime: 2
+  taypingtime: 10
+  alltime: 100
+  inputField: {fileID: 538686165}
 --- !u!4 &757506153
 Transform:
   m_ObjectHideFlags: 0

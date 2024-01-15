@@ -1,24 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class NumberManager : MonoBehaviour//Minigame
 {
     public int Clear = 0;
-    public int Level = 1;
-    public int digit = 1;
-    int ShowingNumber = 0;
-    int EnterNumber = 1;
-    public int PlayerHp = 3;
+    public short Level = 1;
+    public short digit = 1;
+    public int PlayerHp = 2; //ì‹¤ì œ í”Œë ˆì´ì–´ ì²´ë ¥ì€ 3
+    public ShowTMP showTMP;
+    public TMP_InputField Inputvalue;
+    //public Hide answer;
+    long ShowingNumber = 0;
+    long EnterNumber;
+    public float ShowTime = 1.5f;
+    public float imgTime = 2.0f;
+
     
 
-    [TextArea]
-    public string Text;
+
+    
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        Startset();
         
     }
     
@@ -27,20 +40,51 @@ public class NumberManager : MonoBehaviour//Minigame
     {
         
         LevelSystem();
-        GameOver();
+        if (Inputvalue.interactable == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                Enter();
+            }
+        }
+         
+
     }
 
     void Enter()
     {
+        
+        InputNumber();
+
         if(ShowingNumber == EnterNumber)
         {
+            
+            //answer.Correct(2.0f);
+            
             Clear++;
-            Debug.Log("Á¤´ä");
+            //Debug.Log(EnterNumber);
+            Debug.Log("ì •ë‹µ");
+            Startset();
         }
         else
         {
-            PlayerHp--;
-            Debug.Log("¿À´ä");
+            if (PlayerHp == 0)
+            {
+                Debug.Log("ê²Œì„ ë");
+                GameOver();
+                
+            }
+            else
+            {
+                PlayerHp--;
+                Debug.Log("ì˜¤ë‹µ");
+                Startset();
+            }
+            //answer.wronganswer(2.0f);
+            
+            //Debug.Log(EnterNumber);
+            
+            
         }
     }
 
@@ -49,9 +93,9 @@ public class NumberManager : MonoBehaviour//Minigame
         if (Clear == 7)
         {
             Level++;
-            Debug.Log("·¹º§ ¾÷");
+            Debug.Log("ë ˆë²¨ ì—…");
             digit = Level;
-            Debug.Log("ÀÚ¸´¼ö º¯°æ");
+            Debug.Log("ìë¦¿ìˆ˜ ë³€ê²½");
             Clear = 0;
         }
         
@@ -60,16 +104,39 @@ public class NumberManager : MonoBehaviour//Minigame
 
     void GameOver()
     {
-        if(PlayerHp == 0)
+        if (PlayerHp == 0)
         {
-            Debug.Log("°ÔÀÓ ³¡");
+            Invoke("EndingTime", ShowTime);       
         }
     }
-    //void Number()
-    //{
-    //    if(Clear < 7)
-    //    {
-    //        Level++;
-    //    }
-    //}
+    void Number()
+    {        
+        ShowingNumber = Random.Range((int)Mathf.Pow(1, digit), (int)Mathf.Pow(10, digit));
+
+        showTMP.TextChange(ShowingNumber.ToString(), ShowTime);
+        Debug.Log(ShowingNumber);
+        
+    }
+
+    void InputNumber()
+    {
+        EnterNumber = int.Parse(Inputvalue.text);        
+    }
+
+    void Startset()
+    {
+        Number();
+        Inputvalue.interactable = false;
+        Invoke("InputUnlock", ShowTime);
+    }
+
+    void InputUnlock()
+    {
+        Inputvalue.interactable = true;
+    }
+
+    void EndingTime()
+    {
+        SceneManager.instance.NextGame();
+    }
 }

@@ -24,7 +24,7 @@ public class BallonClick : MonoBehaviour
 
             if(hit.collider != null && hit.collider.CompareTag("Ballon"))
             {
-                BloonCheck(hit);
+                BloonCheck(hit);                                                                    
             }
         }
     }
@@ -63,6 +63,9 @@ public class BallonClick : MonoBehaviour
         }
         else // Click Ballon > Other Ballon
         {
+            BallonPopGame.instance.stages[BallonPopGame.instance.stageLevel].timer -= 0.5f;
+            CameraShake.ShakeCamera(0.2f, 0.09f);
+            
             Debug.Log("¿€¿∫ «≥º±¿Ã æ∆¥‘");
         }
     }

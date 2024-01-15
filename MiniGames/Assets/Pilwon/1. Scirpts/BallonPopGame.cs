@@ -61,6 +61,21 @@ public class BallonPopGame : MonoBehaviour
         if (!isGameStart) return;
         stages[stageLevel].timer -= Time.deltaTime;
         timeSlider.fillAmount = stages[stageLevel].timer / stages[stageLevel].maxTimter;
+
+        // Game Over
+        if (timeSlider.fillAmount <= 0f)
+        {
+            BallonPopGame.instance.stageLevel++;
+            BallonPopGame.instance.Init();
+            BallonPopGame.instance.isCurStageClear = true;
+            BallonPopGame.instance.isConveyorMove = true;
+
+            CameraShake.ShakeCamera(0.2f, 0.09f);
+        }
+        else if (timeSlider.fillAmount <= 0f && stageLevel == stages.Length - 1) ;
+        {
+            SceneManager.instance.NextGame();
+        }
     }
 
     public void Init()

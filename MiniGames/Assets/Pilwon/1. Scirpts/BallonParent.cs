@@ -32,6 +32,7 @@ public class BallonParent : MonoBehaviour
             if (BallonPopGame.instance.stageLevel == BallonPopGame.instance.stages.Length - 1)
             {
                 SceneManager.instance.NextGame();
+                Debug.Log("Stage Clear");
             }
             else
             {

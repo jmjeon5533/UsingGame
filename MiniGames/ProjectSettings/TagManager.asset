@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ballon
   - Trash
+  - Stage
   layers:
   - Default
   - TransparentFX

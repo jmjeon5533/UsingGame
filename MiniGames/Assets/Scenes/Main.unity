@@ -766,7 +766,7 @@ MonoBehaviour:
     gameExplain: "\uBC88\uD638\uB97C \uB530\uB77C \uC791\uC131\uD574 \uC804\uC1A1\uD558\uC790!"
     panelColor: {r: 1, g: 0.5272645, b: 0.427451, a: 1}
   - sceneIndex: 4
-    gameExplain: 4
+    gameExplain: "\uD0C0\uC774\uBC0D\uC5D0 \uB9DE\uCDB0 \uAE30\uC5B4\uB97C \uC870\uC791\uD558\uC790!"
     panelColor: {r: 0.41037738, g: 0.9480737, b: 1, a: 1}
   - sceneIndex: 5
     gameExplain: 5

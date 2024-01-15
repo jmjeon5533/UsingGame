@@ -9,6 +9,9 @@ public class HandlePick : MonoBehaviour
     public Transform targetRotate;
     float TargetRotZ;
     public float overTargetValue = 0;
+    bool isOut;
+    public int HP = 3;
+    [SerializeField] GameObject[] hpImage;
     private void Start()
     {
         ResetRot();
@@ -18,30 +21,46 @@ public class HandlePick : MonoBehaviour
         var overValue = Random.Range(0, overTargetValue);
         TargetRotZ = handle.transform.eulerAngles.z + (handle.flipRotate ? -overValue - 100 : overValue + 100);
         print($"{TargetRotZ} : ({handle.transform.eulerAngles.z} + ({overValue} +- 100)");
-        targetRotate.eulerAngles = new Vector3(0,0,TargetRotZ);
+        targetRotate.eulerAngles = new Vector3(0, 0, TargetRotZ);
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        bool isRange = handle.transform.eulerAngles.z >= targetRotate.eulerAngles.z - 15
+            && handle.transform.eulerAngles.z <= targetRotate.eulerAngles.z + 15;
+        if (isRange)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            hit = Physics2D.Raycast(mousePos, Vector2.zero, 0.0f);
-
-            if (hit.collider != null)
+            isOut = true;
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
-                if (hit.collider.CompareTag("Handle"))
-                {
-                    if(handle.transform.eulerAngles.z >= targetRotate.eulerAngles.z - 15 
-                    && handle.transform.eulerAngles.z <= targetRotate.eulerAngles.z + 15)
-                    {
-                        handle.flipRotate = !handle.flipRotate;
-                        overTargetValue += 10;
-                        overTargetValue = Mathf.Clamp(overTargetValue,0,100);
-                        handle.Speed += 7;
-                        ResetRot();
-                    }
-                }
+                handle.flipRotate = !handle.flipRotate;
+                overTargetValue += 10;
+                overTargetValue = Mathf.Clamp(overTargetValue, 0, 100);
+                handle.Speed += 7;
+                ResetRot();
+                isOut = false;
+                SceneManager.instance.AddScore(50);
             }
+        }
+        else
+        {
+            if(isOut)
+            {
+                isOut = false;
+                HP--;
+                HPUpdate();
+                SceneManager.instance.NextGame();
+            }
+        }
+    }
+    void HPUpdate()
+    {
+        for(int i = 0; i < hpImage.Length; i++)
+        {
+            hpImage[i].SetActive(false);
+        }
+        for(int i = 0; i < HP; i++)
+        {
+            hpImage[i].SetActive(true);
         }
     }
 }

@@ -137,6 +137,6 @@ public class NumberManager : MonoBehaviour//Minigame
 
     void EndingTime()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.instance.NextGame();
     }
 }

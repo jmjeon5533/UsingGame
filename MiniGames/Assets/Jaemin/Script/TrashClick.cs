@@ -11,7 +11,7 @@ public class TrashInfo
     public Sprite trashSprite;
     public TrashClick.TrashType trashType;
 }
-public class TrashClick : MiniGame
+public class TrashClick : MonoBehaviour
 {
     public enum TrashType
     {
@@ -34,8 +34,8 @@ public class TrashClick : MiniGame
     private void Start()
     {
         trashImg = trash.GetComponent<SpriteRenderer>();
+        ResetTrash();
     }
-    public override void GameStart() => ResetTrash();
     public void ResetTrash()
     {
         var rand = Random.Range(0, trashData.Length);
@@ -61,7 +61,7 @@ public class TrashClick : MiniGame
                     trashCan.Move();
                     if (trashCan.recycleType == trash.trashType)
                     {
-                        print("성공");
+                        SceneManager.instance.AddScore(100);
                     }
                     else
                     {

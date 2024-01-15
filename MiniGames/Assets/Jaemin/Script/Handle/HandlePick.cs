@@ -35,7 +35,7 @@ public class HandlePick : MonoBehaviour
                 handle.flipRotate = !handle.flipRotate;
                 overTargetValue += 10;
                 overTargetValue = Mathf.Clamp(overTargetValue, 0, 100);
-                handle.Speed += 7;
+                handle.Speed += 5;
                 ResetRot();
                 isOut = false;
                 SceneManager.instance.AddScore(50);
@@ -48,7 +48,7 @@ public class HandlePick : MonoBehaviour
                 isOut = false;
                 HP--;
                 HPUpdate();
-                SceneManager.instance.NextGame();
+                if(HP <= 0) SceneManager.instance.NextGame();
             }
         }
     }

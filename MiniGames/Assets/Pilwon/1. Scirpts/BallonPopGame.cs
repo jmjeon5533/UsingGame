@@ -30,17 +30,25 @@ public class Stage
 
 public class BallonPopGame : MonoBehaviour
 {
-    public static BallonPopGame instance;
+    public static BallonPopGame instance { get; private set; }
 
+    #region [ Var Region ] 
     public Stage[] stages;
     public int stageLevel = 0;
+    public GameObject particle;
+
+    [Header("[ Bool ]")]
+    public bool isGameStart;
+    public bool isCurStageClear;
+    public bool isConveyorMove;
 
     [Header("[ UI ]")]
-    public Slider timeSlider;
+    public Image timeSlider;
+    #endregion
 
     private void Awake()
     {
-        instance = this;    
+        instance = this;
     }
 
     private void Start()
@@ -50,8 +58,9 @@ public class BallonPopGame : MonoBehaviour
 
     private void Update()
     {
+        if (!isGameStart) return;
         stages[stageLevel].timer -= Time.deltaTime;
-        timeSlider.value = stages[stageLevel].timer / stages[stageLevel].maxTimter;
+        timeSlider.fillAmount = stages[stageLevel].timer / stages[stageLevel].maxTimter;
     }
 
     public void Init()

@@ -54,8 +54,12 @@ public class BallonClick : MonoBehaviour
         if(isBloonCheck) // Click Ballon < Other Ballon
         {
             ballonsParent.ballons.Remove(clickBallon);
+            clickBallon.canvas.gameObject.SetActive(false);
+            Instantiate(BallonPopGame.instance.particle, clickBallon.particlePos);
+            clickBallon.paper.SetActive(true);
+
+            // Stage Clear
             ballonsParent.StageClearCheck();
-            Destroy(hit.collider.gameObject);
         }
         else // Click Ballon > Other Ballon
         {

@@ -23,14 +23,36 @@ public class NumberManager : MonoBehaviour//Minigame
     public float imgTime = 2.0f;
     public float taypingtime = 10.0f;
     public float alltime = 100.0f;
-    
+    bool isPaused = false;
     void StartTime()
     {
         //startTime = Time.time;
         //timeManager.StartTimer(10.0f);
+        //isPaused = false;
+        if (!isPaused)
+        {
+            if (alltime > 0)
+            {
+                taypingtime -= Time.deltaTime;
+                alltime = alltime - (10 - taypingtime);
+                alltime = Mathf.Max(0, alltime);
+            }
 
-    } 
-                    
+            if (alltime == 0)
+            {
+                GameOver();
+            
+            }
+
+        }
+    }
+    void TimeManager()
+    {
+
+        alltime = alltime - taypingtime;
+
+    }
+
 
 
     // Start is called before the first frame update
@@ -44,7 +66,7 @@ public class NumberManager : MonoBehaviour//Minigame
     // Update is called once per frame
     void Update()
     {
-
+        StartTime();
         //Debug.Log(alltime);
         LevelSystem();
         if (Inputvalue.interactable == true)
@@ -65,6 +87,7 @@ public class NumberManager : MonoBehaviour//Minigame
         Inputvalue.interactable = false;
         StartCoroutine(inputSelect(1.5f));
         Invoke("InputUnlock", ShowTime);
+        //StartTime();
 
         //Invoke("TaypingTime", taypingtime);
     }
@@ -76,9 +99,9 @@ public class NumberManager : MonoBehaviour//Minigame
         NullEnter();
         if (ShowingNumber == EnterNumber)
         {
-            
+
             //answer.Correct(2.0f);
-            
+            isPaused = true;
             Clear++;
             
             //Debug.Log(EnterNumber);
@@ -87,6 +110,7 @@ public class NumberManager : MonoBehaviour//Minigame
         }
         else
         {
+            isPaused = true;
             HpMinusManager();
             //answer.wronganswer(2.0f);
             
@@ -179,10 +203,5 @@ public class NumberManager : MonoBehaviour//Minigame
         yield return new WaitForSeconds(ShowTime);
         InputfieldSelect();
     }
-    void TimeManager()
-    {
-        
-        alltime = alltime - taypingtime;
-
-    }
+    
 }

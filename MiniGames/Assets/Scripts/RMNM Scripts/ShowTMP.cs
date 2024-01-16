@@ -10,8 +10,7 @@ public class ShowTMP : MonoBehaviour
     //public string a;
 
     [SerializeField] TextMeshProUGUI MainText;
-    [SerializeField] TextMeshProUGUI userTime;
-    [SerializeField] TextMeshProUGUI allTime;
+    
     public void TextChange(string TextMeshProUGUI, float showTime)
     {
         MainText.text = TextMeshProUGUI;
@@ -24,16 +23,6 @@ public class ShowTMP : MonoBehaviour
         MainText.text = string.Empty;
     }
 
-    public void UserTime(string TextMeshProUGUI)
-    {
-        userTime.text = TextMeshProUGUI;
-        userTime.text = string.Empty;
-        
-    }
-    public void AllTime(string TextMeshProUGUI)
-    {
-        allTime.text = TextMeshProUGUI;
-        userTime.text = string.Empty;
-    }
+   
 
 }

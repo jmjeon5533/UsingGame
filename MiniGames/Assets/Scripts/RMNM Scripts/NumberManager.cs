@@ -18,27 +18,21 @@ public class NumberManager : MonoBehaviour//Minigame
     public TMP_InputField inputField;
     [SerializeField] TextMeshProUGUI userTime;
     [SerializeField] TextMeshProUGUI allTime;
-    //public Hide answer;
-    int Bnewtime;
     int Anewtime;
     long ShowingNumber = 0;
     long EnterNumber;
     public float ShowTime = 1.5f;
     public float taypingtime = 10.0f;
-    public float alltime = 60.0f;
+    
     bool isPaused = true;
 
 
     void StartTime()
     {        
         if (isPaused == false)
-        {
-            if (alltime > 0f)
-            {
-                taypingtime -= Time.deltaTime;
-                alltime -= Time.deltaTime;
-                //Debug.Log(Mathf.Round(alltime));
-            }
+        { 
+            taypingtime -= Time.deltaTime;
+            
             if (taypingtime <= 0)
             {
                 NullEnter();
@@ -48,16 +42,7 @@ public class NumberManager : MonoBehaviour//Minigame
     }
     void TimeManager()
     {
-        if (alltime <= 10.0f)
-        {
-            taypingtime = alltime;
-        }
-        else
-        {
-            taypingtime = 10.0f;
-        }
-        
-        
+        taypingtime = 10.0f;
     }
     
     void Start()
@@ -91,9 +76,7 @@ public class NumberManager : MonoBehaviour//Minigame
         StartCoroutine(InputSelect(1.5f));
         Invoke("InputUnlock", ShowTime);
         StartCoroutine(Starsettime(1.5f));
-        //StartTime();
-
-        //Invoke("TaypingTime", taypingtime);
+        
     }
 
     void Enter()
@@ -103,35 +86,26 @@ public class NumberManager : MonoBehaviour//Minigame
         NullEnter();
         if (ShowingNumber == EnterNumber)
         {
-
-            //answer.Correct(2.0f);
             isPaused = true;
             
             Clear++;
             
-            //Debug.Log(EnterNumber);
             Debug.Log("정답");
             Startset();
         }
         else
         {
-            
-            HpMinusManager();
-            //answer.wronganswer(2.0f);
-            
-            //Debug.Log(EnterNumber);
-            
-            
+            HpMinusManager(); 
         }
     }
 
     void LevelSystem()
     {   
-        if(Level <= 10)
+        if(Level <= 20)
         {
             if (Clear == 4)
             {
-                Level++;
+                Level += 2;
                 Debug.Log("레벨 업");
                 digit = Level;
                 Debug.Log("자릿수 변경");
@@ -182,7 +156,7 @@ public class NumberManager : MonoBehaviour//Minigame
     void HpMinusManager()
     {
         isPaused = true;
-        if (alltime <= 0f || PlayerHp == 0)
+        if (PlayerHp == 0)
         {
             Debug.Log("게임 끝");
             GameOver();
@@ -216,15 +190,9 @@ public class NumberManager : MonoBehaviour//Minigame
 
     void Timer()
     {
-        AllTime(Bnewtime.ToString());
         UserTime(Anewtime.ToString());
-        
     }
-    public void AllTime(string TextMeshProUGUI)
-    {
-        Bnewtime = (int)alltime;
-        allTime.text = TextMeshProUGUI;
-    }
+    
 
     public void UserTime(string TextMeshProUGUI)
     {

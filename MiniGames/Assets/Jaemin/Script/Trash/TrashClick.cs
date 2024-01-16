@@ -7,7 +7,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class TrashInfo
 {
-    public string name;
     public Sprite trashSprite;
     public TrashClick.TrashType trashType;
 }
@@ -19,6 +18,7 @@ public class TrashClick : MonoBehaviour
         Paper,
         Can,
         Glass,
+        Plastic
     }
     RaycastHit2D hit;
 
@@ -26,6 +26,7 @@ public class TrashClick : MonoBehaviour
     [SerializeField] Trash trash;
     [SerializeField] Image TimeSlider;
     [SerializeField] AudioClip successSFX, failSFX;
+    [SerializeField] AudioClip bgm;
     SpriteRenderer trashImg;
 
     float Maxtime;
@@ -40,7 +41,7 @@ public class TrashClick : MonoBehaviour
         ResetTrash();
         Maxtime = 10;
         curtime = Maxtime;
-
+        SceneManager.instance.SetAudio(bgm,SceneManager.SoundState.BGM,true);
     }
     public void ResetTrash()
     {
@@ -52,7 +53,7 @@ public class TrashClick : MonoBehaviour
     }
     void ResetTimer()
     {
-        Maxtime -= 0.2f;
+        Maxtime -= 0.35f;
         curtime = Maxtime;
     }
 
@@ -72,15 +73,21 @@ public class TrashClick : MonoBehaviour
                     trashCan.Move();
                     if (trashCan.recycleType == trash.trashType)
                     {
-                        if (SceneManager.instance != null) SceneManager.instance.AddScore(50);
-                        SceneManager.instance.SetAudio(successSFX, SceneManager.SoundState.SFX, false);
+                        if (SceneManager.instance != null)
+                        {
+                            SceneManager.instance.AddScore(50);
+                            SceneManager.instance.SetAudio(successSFX, SceneManager.SoundState.SFX, false);
+                        }
                         ResetTimer();
                     }
                     else
                     {
                         print("실패");
                         curtime -= Maxtime / 2;
-                        SceneManager.instance.SetAudio(failSFX, SceneManager.SoundState.SFX, false);
+                        if (SceneManager.instance != null)
+                        {
+                            SceneManager.instance.SetAudio(failSFX, SceneManager.SoundState.SFX, false);
+                        }
 
                     }
                 }

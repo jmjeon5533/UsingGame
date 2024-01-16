@@ -40,7 +40,7 @@ public class HandlePick : MonoBehaviour
                 handle.Speed += 5;
                 ResetRot();
                 isOut = false;
-                SceneManager.instance.AddScore(100);
+                SceneManager.instance.AddScore(50);
             }
         }
         else

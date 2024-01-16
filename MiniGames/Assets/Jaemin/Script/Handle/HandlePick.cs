@@ -12,9 +12,11 @@ public class HandlePick : MonoBehaviour
     bool isOut;
     public int HP = 3;
     [SerializeField] GameObject[] hpImage;
+    [SerializeField] AudioClip bgm;
     private void Start()
     {
         ResetRot();
+        SceneManager.instance.SetAudio(bgm,SceneManager.SoundState.BGM,true);
     }
     void ResetRot()
     {
@@ -25,8 +27,8 @@ public class HandlePick : MonoBehaviour
     }
     void Update()
     {
-        bool isRange = handle.transform.eulerAngles.z >= targetRotate.eulerAngles.z - 15
-            && handle.transform.eulerAngles.z <= targetRotate.eulerAngles.z + 15;
+        bool isRange = handle.transform.eulerAngles.z >= targetRotate.eulerAngles.z - 20
+            && handle.transform.eulerAngles.z <= targetRotate.eulerAngles.z + 20;
         if (isRange)
         {
             isOut = true;
@@ -38,7 +40,7 @@ public class HandlePick : MonoBehaviour
                 handle.Speed += 5;
                 ResetRot();
                 isOut = false;
-                SceneManager.instance.AddScore(50);
+                SceneManager.instance.AddScore(100);
             }
         }
         else

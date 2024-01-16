@@ -7,7 +7,12 @@ public class TitleManager : MonoBehaviour
 {
     public void GameStart() => SceneManager.instance.GameStart();
     [SerializeField] Image[] bgs;
+    [SerializeField] AudioClip bgm;
     public float Speed;
+
+    private void Start() {
+        SceneManager.instance.SetAudio(bgm,SceneManager.SoundState.BGM,true);
+    }
 
     private void Update()
     {

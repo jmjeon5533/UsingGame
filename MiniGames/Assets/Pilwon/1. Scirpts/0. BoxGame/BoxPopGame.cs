@@ -88,10 +88,8 @@ public class BoxPopGame : MonoBehaviour
         curStage.stageObj.SetActive(true);
         for (int index = 0; index < curStage.ballon.Count; index++)
         {
-            Ballon ballon = curStage.ballon[index].ballonObj.GetComponent<Ballon>();
-            ballon.count = curStage.ballon[index].ballonCount; // ǳ�� ũ�� ���� 
             Box ballon = curStage.ballon[index].ballonObj.GetComponent<Box>();
-            ballon.count = curStage.ballon[index].ballonCount; // ǳ�� ũ�� ���� 
+            ballon.count = curStage.ballon[index].ballonCount;
 
             curStage.ballon[index].text = curStage.ballon[index].ballonObj.GetComponentInChildren<TMP_Text>();
             curStage.ballon[index].text.text = curStage.ballon[index].textString;

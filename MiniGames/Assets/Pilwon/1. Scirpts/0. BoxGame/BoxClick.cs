@@ -1,14 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxClick : MonoBehaviour
 {
-    [SerializeField] private LayerMask clickLayer;
+    [SerializeField] private LayerMask bloonLayer;
 
     private RaycastHit2D hit;
 
-    private bool isBoxCheck;
+    private bool isBloonCheck;
 
     private void Update()
     {
@@ -17,41 +17,41 @@ public class BoxClick : MonoBehaviour
 
     private void Click()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            hit = Physics2D.Raycast(mousePos, Vector2.zero, 0.0f, clickLayer);
+            hit = Physics2D.Raycast(mousePos, Vector2.zero, 0.0f, bloonLayer);
 
-            if(hit.collider != null && hit.collider.CompareTag("Box"))
+            if (hit.collider != null && hit.collider.CompareTag("Box"))
             {
-                BallonCheck(hit);
+                BloonCheck(hit);
             }
         }
     }
 
-    private void BallonCheck(RaycastHit2D hit)
+    private void BloonCheck(RaycastHit2D hit)
     {
         var ballonsParent = hit.collider.gameObject.GetComponentInParent<BoxParent>();
         var clickBallon = hit.collider.gameObject.GetComponent<Box>();
 
-        isBoxCheck = true;
+        isBloonCheck = true;
 
         for (int index = 0; index < ballonsParent.boxs.Count; index++)
         {
             var ballonCount = ballonsParent.boxs[index].GetComponent<Box>().count;
 
-            if(ballonsParent.boxs.Count == 1)
+            if (ballonsParent.boxs.Count == 1)
             {
                 break;
             }
             else if (clickBallon.count > ballonCount)
             {
-                isBoxCheck = false;
+                isBloonCheck = false;
                 break;
             }
         }
 
-        if(isBoxCheck) // Click Ballon < Other Ballon
+        if (isBloonCheck) // Click Ballon < Other Ballon
         {
             ballonsParent.boxs.Remove(clickBallon);
             clickBallon.canvas.gameObject.SetActive(false);
@@ -63,10 +63,9 @@ public class BoxClick : MonoBehaviour
         }
         else // Click Ballon > Other Ballon
         {
-            BallonPopGame.instance.stages[BallonPopGame.instance.stageLevel].timer -= 0.5f;
+            BoxPopGame.instance.stages[BoxPopGame.instance.stageLevel].timer -= 0.5f;
             CameraShake.ShakeCamera(0.2f, 0.09f);
-            
-            Debug.Log("���� ǳ���� �ƴ�");
+
         }
     }
 }

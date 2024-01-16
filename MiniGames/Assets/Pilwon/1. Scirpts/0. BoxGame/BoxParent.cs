@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 public class BoxParent : MonoBehaviour
-{
+{   
     public List<Box> boxs = new List<Box>();
     [SerializeField] float speed;
 

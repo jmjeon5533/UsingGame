@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloonLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
 --- !u!1 &654068051 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8651773351936456135, guid: aec34210b7b12b741b671b8653ecad5b, type: 3}

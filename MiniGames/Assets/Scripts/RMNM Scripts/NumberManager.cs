@@ -16,56 +16,59 @@ public class NumberManager : MonoBehaviour//Minigame
     public ShowTMP showTMP;
     public TMP_InputField Inputvalue;
     public TMP_InputField inputField;
+    [SerializeField] TextMeshProUGUI userTime;
+    [SerializeField] TextMeshProUGUI allTime;
     //public Hide answer;
+    int Bnewtime;
+    int Anewtime;
     long ShowingNumber = 0;
     long EnterNumber;
     public float ShowTime = 1.5f;
-    public float imgTime = 2.0f;
     public float taypingtime = 10.0f;
-    public float alltime = 100.0f;
-    bool isPaused = false;
+    public float alltime = 60.0f;
+    bool isPaused = true;
+
+
     void StartTime()
-    {
-        //startTime = Time.time;
-        //timeManager.StartTimer(10.0f);
-        //isPaused = false;
-        if (!isPaused)
+    {        
+        if (isPaused == false)
         {
-            if (alltime > 0)
+            if (alltime > 0f)
             {
                 taypingtime -= Time.deltaTime;
-                alltime = alltime - (10 - taypingtime);
-                alltime = Mathf.Max(0, alltime);
+                alltime -= Time.deltaTime;
+                //Debug.Log(Mathf.Round(alltime));
             }
-
-            if (alltime == 0)
+            if (taypingtime <= 0)
             {
-                GameOver();
-            
+                NullEnter();
+                HpMinusManager();
             }
-
         }
     }
     void TimeManager()
     {
-
-        alltime = alltime - taypingtime;
-
+        if (alltime <= 10.0f)
+        {
+            taypingtime = alltime;
+        }
+        else
+        {
+            taypingtime = 10.0f;
+        }
+        
+        
     }
-
-
-
-    // Start is called before the first frame update
+    
     void Start()
-    {
-        
+    { 
         Startset();
-        
     }
     
     // Update is called once per frame
     void Update()
     {
+        Timer();
         StartTime();
         //Debug.Log(alltime);
         LevelSystem();
@@ -82,11 +85,12 @@ public class NumberManager : MonoBehaviour//Minigame
 
     void Startset()
     {
-        Number();
-        //InputfieldSelect();
+        TimeManager();
+        Number();        
         Inputvalue.interactable = false;
-        StartCoroutine(inputSelect(1.5f));
+        StartCoroutine(InputSelect(1.5f));
         Invoke("InputUnlock", ShowTime);
+        StartCoroutine(Starsettime(1.5f));
         //StartTime();
 
         //Invoke("TaypingTime", taypingtime);
@@ -102,6 +106,7 @@ public class NumberManager : MonoBehaviour//Minigame
 
             //answer.Correct(2.0f);
             isPaused = true;
+            
             Clear++;
             
             //Debug.Log(EnterNumber);
@@ -110,7 +115,7 @@ public class NumberManager : MonoBehaviour//Minigame
         }
         else
         {
-            isPaused = true;
+            
             HpMinusManager();
             //answer.wronganswer(2.0f);
             
@@ -122,16 +127,17 @@ public class NumberManager : MonoBehaviour//Minigame
 
     void LevelSystem()
     {   
-        if (Clear == 4)
+        if(Level <= 10)
         {
-            Level++;
-            Debug.Log("레벨 업");
-            digit = Level;
-            Debug.Log("자릿수 변경");
-            Clear = 0;
+            if (Clear == 4)
+            {
+                Level++;
+                Debug.Log("레벨 업");
+                digit = Level;
+                Debug.Log("자릿수 변경");
+                Clear = 0;
+            }
         }
-        
-                  
     }
 
     void GameOver()
@@ -171,15 +177,12 @@ public class NumberManager : MonoBehaviour//Minigame
         SceneManager.instance.NextGame();
     }
 
-    void TaypingTime()
-    {
-        HpMinusManager();
-
-    }
+    
 
     void HpMinusManager()
     {
-        if (PlayerHp == 0)
+        isPaused = true;
+        if (alltime <= 0f || PlayerHp == 0)
         {
             Debug.Log("게임 끝");
             GameOver();
@@ -198,10 +201,34 @@ public class NumberManager : MonoBehaviour//Minigame
         inputField.Select();
         inputField.ActivateInputField();
     }
-    private IEnumerator inputSelect(float ShowTime)
+    private IEnumerator InputSelect(float ShowTime)
     {
         yield return new WaitForSeconds(ShowTime);
         InputfieldSelect();
     }
     
+    private IEnumerator Starsettime(float ShowTime)
+    {
+        yield return new WaitForSeconds(ShowTime);
+        isPaused = false;
+        
+    }
+
+    void Timer()
+    {
+        AllTime(Bnewtime.ToString());
+        UserTime(Anewtime.ToString());
+        
+    }
+    public void AllTime(string TextMeshProUGUI)
+    {
+        Bnewtime = (int)alltime;
+        allTime.text = TextMeshProUGUI;
+    }
+
+    public void UserTime(string TextMeshProUGUI)
+    {
+        Anewtime = (int)taypingtime;
+        userTime.text = TextMeshProUGUI;
+    }
 }

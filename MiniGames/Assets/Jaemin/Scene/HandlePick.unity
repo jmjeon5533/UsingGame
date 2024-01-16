@@ -1163,6 +1163,7 @@ MonoBehaviour:
   - {fileID: 609981758}
   - {fileID: 1825069533}
   - {fileID: 363264082}
+  bgm: {fileID: 8300000, guid: f4f4f52ba0bb83844bb2176ebfeed02b, type: 3}
 --- !u!4 &1016870726
 Transform:
   m_ObjectHideFlags: 0

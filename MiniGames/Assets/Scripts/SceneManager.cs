@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class GameInfo
@@ -78,6 +79,39 @@ public class SceneManager : MonoBehaviour
         Time.timeScale = 1;
         isFade = false;
     }
+    IEnumerator Result()
+    {
+        yield return fadeObj.DOFade(1f, 0.5f).WaitForCompletion();
+
+        // Load Scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Result");
+
+        // Set Time.timeScale to 0 (if needed)
+        yield return new WaitForSecondsRealtime(1f);
+
+        // Fade Out
+        yield return fadeObj.DOFade(0f, 0.5f).WaitForCompletion();
+        scoreText.transform.DOScale(Vector3.one * 2,1);
+        yield return scoreText.transform.DOLocalMove(Vector2.zero,1).WaitForCompletion();
+
+        yield return new WaitForSeconds(2f);
+
+        yield return fadeObj.DOFade(1f, 0.5f).WaitForCompletion();
+
+        // Load Scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Result");
+
+
+        scoreText.transform.localScale = Vector3.one;
+        Score = 0;
+        scoreText.transform.localPosition = new Vector2(-419,459);
+        scoreText.gameObject.SetActive(false);
+        // Set Time.timeScale to 0 (if needed)
+        yield return new WaitForSecondsRealtime(1f);
+
+        // Fade Out
+        yield return fadeObj.DOFade(0f, 0.5f).WaitForCompletion();
+    }
 
     public void AddScore(int value)
     {
@@ -88,7 +122,7 @@ public class SceneManager : MonoBehaviour
     {
         curOrder++;
         if (curOrder >= gameOrder.Count)
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Result");
+            StartCoroutine(Result());
 
         else
             StartCoroutine(StartFade());

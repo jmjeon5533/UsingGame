@@ -12,8 +12,8 @@ public class BallonGameManager : MonoBehaviour
     public bool isGameOver;
 
     [Header("[ Spawn Var ]")]
-    public int spawnCount; // ¼ÒÈ¯ÇÒ ¸ó½ºÅÍ ¼ö
-    public int fieldSpawnCount; // ÇÊµå¿¡ ¼ÒÈ¯µÈ ¸ó½ºÅÍ ¼ö
+    public int spawnCount; // ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    public int fieldSpawnCount; // ï¿½Êµå¿¡ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
     [Header("[ Spawn Parent ]")]
     public GameObject particleParent;
@@ -35,7 +35,7 @@ public class BallonGameManager : MonoBehaviour
 
     private void GameClear()
     {
-        if(spawnCount <= 0 && fieldSpawnCount <= 0)
+        if(spawnCount <= 0 && fieldSpawnCount <= 0 && !isGameClear)
         {
             isGameClear = true;
             SceneManager.instance.NextGame();

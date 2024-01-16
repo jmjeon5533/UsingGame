@@ -41,7 +41,7 @@ public class BoxPopGame : MonoBehaviour
     public bool isGameStart;
     public bool isCurStageClear;
     public bool isConveyorMove;
-
+    private bool isStageClear;
     [Header("[ UI ]")]
     public Image timeSlider;
     #endregion
@@ -68,8 +68,9 @@ public class BoxPopGame : MonoBehaviour
             isConveyorMove = true;
 
             CameraShake.ShakeCamera(0.2f, 0.09f);
-            if (stageLevel == stages.Length - 1)
+            if (stageLevel == stages.Length - 1 && !isStageClear)
             {
+                isStageClear = true;
                 SceneManager.instance.NextGame();
             }
         }

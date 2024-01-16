@@ -105,7 +105,7 @@ public class SceneManager : MonoBehaviour
         yield return fadeObj.DOFade(1f, 0.5f).WaitForCompletion();
 
         // Load Scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Result");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 
 
         scoreText.transform.localScale = Vector3.one;

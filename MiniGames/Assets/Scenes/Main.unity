@@ -455,7 +455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &307438452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ MonoBehaviour:
     gameExplain: "\uD0C0\uC774\uBC0D\uC5D0 \uB9DE\uCDB0 \uAE30\uC5B4\uB97C \uC870\uC791\uD558\uC790!"
     panelColor: {r: 0.41037738, g: 0.9480737, b: 1, a: 1}
   - sceneIndex: 5
-    gameExplain: 5
+    gameExplain: "\uBCD1\uADE0\uB4E4\uC744 \uD130\uCE58\uD574 \uCC98\uCE58\uD558\uC790!"
     panelColor: {r: 0.82253987, g: 0.514151, b: 1, a: 1}
   fadeObj: {fileID: 32749752}
   explainImg: {fileID: 2029044936}

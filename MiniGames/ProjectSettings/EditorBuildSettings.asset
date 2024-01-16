@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jaemin/Scene/HandlePick.unity
     guid: c0f7c0406de0ff8499f48586d6a4d619
+  - enabled: 1
+    path: Assets/Pilwon/0. DevScene/BallonScene.unity
+    guid: 087c16678d0d3c944862d94400ff87eb
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 8ac31df38485e864da54db2ffad7e794
   m_configObjects: {}

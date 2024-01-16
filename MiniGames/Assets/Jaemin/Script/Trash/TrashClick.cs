@@ -25,6 +25,7 @@ public class TrashClick : MonoBehaviour
     public TrashInfo[] trashData;
     [SerializeField] Trash trash;
     [SerializeField] Image TimeSlider;
+    [SerializeField] AudioClip successSFX, failSFX;
     SpriteRenderer trashImg;
 
     float Maxtime;
@@ -71,13 +72,16 @@ public class TrashClick : MonoBehaviour
                     trashCan.Move();
                     if (trashCan.recycleType == trash.trashType)
                     {
-                        if (SceneManager.instance != null) SceneManager.instance.AddScore(100);
+                        if (SceneManager.instance != null) SceneManager.instance.AddScore(50);
+                        SceneManager.instance.SetAudio(successSFX, SceneManager.SoundState.SFX, false);
                         ResetTimer();
                     }
                     else
                     {
                         print("실패");
                         curtime -= Maxtime / 2;
+                        SceneManager.instance.SetAudio(failSFX, SceneManager.SoundState.SFX, false);
+
                     }
                 }
             }

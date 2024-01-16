@@ -63,7 +63,10 @@ public class BoxClick : MonoBehaviour
         }
         else // Click Ballon > Other Ballon
         {
-            Debug.Log("ÀÛÀº Ç³¼±ÀÌ ¾Æ´Ô");
+            BallonPopGame.instance.stages[BallonPopGame.instance.stageLevel].timer -= 0.5f;
+            CameraShake.ShakeCamera(0.2f, 0.09f);
+            
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ Ç³ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½");
         }
     }
 }

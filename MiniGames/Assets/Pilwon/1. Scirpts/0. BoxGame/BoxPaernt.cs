@@ -32,6 +32,7 @@ public class BoxParent : MonoBehaviour
             if (BoxPopGame.instance.stageLevel == BoxPopGame.instance.stages.Length - 1)
             {
                 SceneManager.instance.NextGame();
+                Debug.Log("Stage Clear");
             }
             else
             {

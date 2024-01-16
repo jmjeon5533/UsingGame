@@ -59,8 +59,26 @@ public class BoxPopGame : MonoBehaviour
     private void Update()
     {
         if (!isGameStart) return;
+
+        if (stages[stageLevel].timer <= 0f)
+        {
+            stageLevel++;
+            Init();
+            isCurStageClear = true;
+            isConveyorMove = true;
+
+            CameraShake.ShakeCamera(0.2f, 0.09f);
+            if (stageLevel == stages.Length - 1)
+            {
+                SceneManager.instance.NextGame();
+            }
+        }
+
         stages[stageLevel].timer -= Time.deltaTime;
         timeSlider.fillAmount = stages[stageLevel].timer / stages[stageLevel].maxTimter;
+
+        // Game Over
+
     }
 
     public void Init()
@@ -70,8 +88,10 @@ public class BoxPopGame : MonoBehaviour
         curStage.stageObj.SetActive(true);
         for (int index = 0; index < curStage.ballon.Count; index++)
         {
+            Ballon ballon = curStage.ballon[index].ballonObj.GetComponent<Ballon>();
+            ballon.count = curStage.ballon[index].ballonCount; // Ç³ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
             Box ballon = curStage.ballon[index].ballonObj.GetComponent<Box>();
-            ballon.count = curStage.ballon[index].ballonCount; // Ç³¼± Å©±â ¼³Á¤ 
+            ballon.count = curStage.ballon[index].ballonCount; // Ç³ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 
             curStage.ballon[index].text = curStage.ballon[index].ballonObj.GetComponentInChildren<TMP_Text>();
             curStage.ballon[index].text.text = curStage.ballon[index].textString;

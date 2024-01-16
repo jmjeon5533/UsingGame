@@ -22,6 +22,11 @@ public class ShowTMP : MonoBehaviour
         MainText.text = string.Empty;
     }
 
+    //public void NullTextChange(string TextMeshProUGUI)
+    //{
+    //    MainText.text = null;
+    //}
+
     //[SerializeField] TextMeshProUGUI ChangeText;
     //public void EnterChangeText(string TextMeshProUGUI)
     //{

@@ -37,6 +37,10 @@ public class BoxPopGame : MonoBehaviour
     public int stageLevel = 0;
     public GameObject particle;
 
+    [Header("[ VFX ]")]
+    public AudioClip boxClickVfx;
+    public AudioClip boxCancelVfx;
+
     [Header("[ Bool ]")]
     public bool isGameStart;
     public bool isCurStageClear;
@@ -63,16 +67,16 @@ public class BoxPopGame : MonoBehaviour
         if (stages[stageLevel].timer <= 0f)
         {
             stageLevel++;
-            Init();
-            isCurStageClear = true;
-            isConveyorMove = true;
-
-            CameraShake.ShakeCamera(0.2f, 0.09f);
             if (stageLevel == stages.Length - 1 && !isStageClear)
             {
                 isStageClear = true;
                 SceneManager.instance.NextGame();
             }
+            Init();
+            isCurStageClear = true;
+            isConveyorMove = true;
+
+            CameraShake.ShakeCamera(0.2f, 0.09f);
         }
 
         stages[stageLevel].timer -= Time.deltaTime;

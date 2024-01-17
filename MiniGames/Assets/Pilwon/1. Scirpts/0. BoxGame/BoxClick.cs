@@ -57,14 +57,17 @@ public class BoxClick : MonoBehaviour
             clickBallon.canvas.gameObject.SetActive(false);
             Instantiate(BoxPopGame.instance.particle, clickBallon.particlePos);
             clickBallon.paper.SetActive(true);
+            SceneManager.instance.AddScore(30);
+            SceneManager.instance.SetAudio(BoxPopGame.instance.boxClickVfx, SceneManager.SoundState.SFX, false);
 
             // Stage Clear
             ballonsParent.StageClearCheck();
         }
         else // Click Ballon > Other Ballon
         {
-            BoxPopGame.instance.stages[BoxPopGame.instance.stageLevel].timer -= 0.5f;
+            BoxPopGame.instance.stages[BoxPopGame.instance.stageLevel].timer -= 2f;
             CameraShake.ShakeCamera(0.2f, 0.09f);
+            SceneManager.instance.SetAudio(BoxPopGame.instance.boxCancelVfx, SceneManager.SoundState.SFX, false);
 
         }
     }

@@ -1796,8 +1796,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9615ff3478dfbb748b6271c6a837cc27, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.03653574, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 87bcd76e99fefa24c8996139c8914e7a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1993,6 +1993,7 @@ MonoBehaviour:
   TimeSlider: {fileID: 1469705768}
   successSFX: {fileID: 8300000, guid: 20cec915fe1696449ac82d81be972d88, type: 3}
   failSFX: {fileID: 8300000, guid: ee0be315fdfe5364faea5dafa6e0ae60, type: 3}
+  bgm: {fileID: 8300000, guid: 23a5927d0b47245478b3341e124c75ab, type: 3}
 --- !u!4 &1946895642
 Transform:
   m_ObjectHideFlags: 0

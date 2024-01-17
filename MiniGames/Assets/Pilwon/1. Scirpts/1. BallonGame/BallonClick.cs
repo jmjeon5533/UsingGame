@@ -25,6 +25,7 @@ public class BallonClick : MonoBehaviour
             if (hit.collider != null && hit.collider.CompareTag("Ballon"))
             {
                 Ballon ballon = hit.collider.gameObject.GetComponent<Ballon>();
+                SceneManager.instance.SetAudio(BallonGameManager.instance.ClickVfx, SceneManager.SoundState.SFX, false);
                 StartCoroutine(Co_Size(ballon.gameObject));
                 ballon.clickCount--;
             }

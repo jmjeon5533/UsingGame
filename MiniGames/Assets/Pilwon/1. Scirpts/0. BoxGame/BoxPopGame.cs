@@ -37,6 +37,10 @@ public class BoxPopGame : MonoBehaviour
     public int stageLevel = 0;
     public GameObject particle;
 
+    [Header("[ VFX ]")]
+    public AudioClip boxClickVfx;
+    public AudioClip boxCancelVfx;
+
     [Header("[ Bool ]")]
     public bool isGameStart;
     public bool isCurStageClear;

@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickCount: 0
-  levelUpTime: 2
+  levelUpTime: 1.5
   maxLevelUpTime: 0
   ballonLevel: 0
   scaleSize:

@@ -29,10 +29,8 @@ public class BallonSpawner : MonoBehaviour
 
     private IEnumerator Co_Spawn()
     {
-        while (true)
+        while (!BallonGameManager.instance.isGameOver)
         {
-            if (BallonGameManager.instance.isGameOver) continue;
-
             float posX = Random.Range(minX, maxX);
             float PosY = Random.Range(minY, maxY);
             Vector2 spawnPos = new Vector2(posX, PosY);

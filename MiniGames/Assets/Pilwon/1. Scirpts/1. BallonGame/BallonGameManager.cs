@@ -12,8 +12,12 @@ public class BallonGameManager : MonoBehaviour
     public bool isGameOver;
 
     [Header("[ Spawn Var ]")]
-    public int spawnCount; // ��ȯ�� ���� ��
-    public int fieldSpawnCount; // �ʵ忡 ��ȯ�� ���� ��
+    public int spawnCount;
+    public int fieldSpawnCount; 
+
+    [Header("[ VFX ]")]
+    public AudioClip ClickVfx;
+    public AudioClip PungVfx; // 폭발음
 
     [Header("[ Spawn Parent ]")]
     public GameObject particleParent;
@@ -31,6 +35,7 @@ public class BallonGameManager : MonoBehaviour
     private void Update()
     {
         GameClear();
+        GameOver();
     }
 
     private void GameClear()
@@ -44,8 +49,9 @@ public class BallonGameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if(isGameOver)
+        if(isGameOver && !isGameClear)
         {
+            isGameClear = true;
             SceneManager.instance.NextGame();
         }
     }

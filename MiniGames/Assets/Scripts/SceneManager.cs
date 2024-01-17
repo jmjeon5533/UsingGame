@@ -98,7 +98,7 @@ public class SceneManager : MonoBehaviour
         // Fade Out
         yield return fadeObj.DOFade(0f, 0.5f).WaitForCompletion();
         scoreText.transform.DOScale(Vector3.one * 2, 1);
-        yield return scoreText.transform.DOLocalMove(Vector2.zero, 1).WaitForCompletion();
+        yield return scoreText.transform.DOLocalMove(new Vector2(400,0), 1).WaitForCompletion();
 
         yield return new WaitForSeconds(2f);
 

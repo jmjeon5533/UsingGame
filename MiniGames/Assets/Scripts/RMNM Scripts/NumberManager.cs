@@ -16,8 +16,9 @@ public class NumberManager : MonoBehaviour//Minigame
     public ShowTMP showTMP;
     public TMP_InputField Inputvalue;
     public TMP_InputField inputField;
+    public HpManager HP;
     [SerializeField] TextMeshProUGUI userTime;
-    [SerializeField] TextMeshProUGUI allTime;
+    [SerializeField] AudioClip Bgm;
     int Anewtime;
     long ShowingNumber = 0;
     long EnterNumber;
@@ -48,6 +49,7 @@ public class NumberManager : MonoBehaviour//Minigame
     void Start()
     { 
         Startset();
+        SceneManager.instance.SetAudio(Bgm, SceneManager.SoundState.BGM, true);
     }
     
     // Update is called once per frame
@@ -89,7 +91,7 @@ public class NumberManager : MonoBehaviour//Minigame
             isPaused = true;
             
             Clear++;
-            
+            SceneManager.instance.AddScore(100);
             Debug.Log("정답");
             Startset();
         }
@@ -116,6 +118,8 @@ public class NumberManager : MonoBehaviour//Minigame
 
     void GameOver()
     {
+        HP.Hp--;
+        HP.hpupdate();
         if (PlayerHp == 0)
         {
             Invoke("EndingTime", ShowTime);       
@@ -164,6 +168,8 @@ public class NumberManager : MonoBehaviour//Minigame
         }
         else
         {
+            HP.Hp--;
+            HP.hpupdate();
             PlayerHp--;
             Debug.Log("오답");
             Startset();

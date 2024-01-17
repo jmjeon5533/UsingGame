@@ -509,7 +509,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC810\uC218 : "
+  m_Text: "\uC810\uC218 : 0"
 --- !u!222 &307438454
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -854,6 +854,7 @@ MonoBehaviour:
   soundObject: {fileID: -7793182162280452254, guid: da4a3e6d8636a2142b022377824f639f, type: 3}
   explainText: {fileID: 1441145327}
   scoreText: {fileID: 307438453}
+  resultSFX: {fileID: 0}
   Score: 0
 --- !u!1 &728184795
 GameObject:

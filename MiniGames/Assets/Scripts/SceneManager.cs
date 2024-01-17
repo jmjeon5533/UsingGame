@@ -137,7 +137,7 @@ public class SceneManager : MonoBehaviour
         else
             StartCoroutine(StartFade());
     }
-    public GameObject SetAudio(AudioClip audio, SoundState soundState, bool looping, float pitch = 1)
+    public GameObject SetAudio(AudioClip audio, SoundState soundState, bool looping, float pitch = 1, float volume = 1)
     {
         var sound = Instantiate(soundObject, Camera.main.transform.position, Quaternion.identity)
         .GetComponent<AudioSource>();
@@ -145,6 +145,7 @@ public class SceneManager : MonoBehaviour
         sound.clip = audio;
         sound.GetComponent<Sound>().soundState = soundState;
         sound.loop = looping;
+        sound.volume = volume;
         sound.Play();
         if (!looping) Destroy(sound.gameObject, audio.length);
         return sound.gameObject;

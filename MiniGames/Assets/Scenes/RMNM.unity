@@ -850,7 +850,7 @@ MonoBehaviour:
   inputField: {fileID: 538686165}
   HP: {fileID: 925602630}
   userTime: {fileID: 779732811}
-  Bgm: {fileID: 0}
+  Bgm: {fileID: 8300000, guid: 5c25798948898b14fbc64717cc0fae13, type: 3}
   ShowTime: 1.5
   taypingtime: 10
 --- !u!4 &757506153

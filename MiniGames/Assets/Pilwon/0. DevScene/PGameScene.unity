@@ -1089,8 +1089,8 @@ MonoBehaviour:
   stages:
   - stageName: Stage 1
     stageObj: {fileID: 1803091189}
-    maxTimter: 10
-    timer: 10
+    maxTimter: 8
+    timer: 8
     ballon:
     - ballonObj: {fileID: 411729489}
       ballonCount: 10
@@ -1106,13 +1106,13 @@ MonoBehaviour:
       textString: 6X5
   - stageName: Stage 2
     stageObj: {fileID: 1013718297}
-    maxTimter: 13
-    timer: 13
+    maxTimter: 8
+    timer: 8
     ballon:
     - ballonObj: {fileID: 1444835091}
-      ballonCount: 30
+      ballonCount: 40
       text: {fileID: 0}
-      textString: 10X3
+      textString: 10X4
     - ballonObj: {fileID: 654068051}
       ballonCount: 15
       text: {fileID: 0}
@@ -1127,8 +1127,8 @@ MonoBehaviour:
       textString: 33-3
   - stageName: Stage 3
     stageObj: {fileID: 154596313}
-    maxTimter: 13
-    timer: 13
+    maxTimter: 10
+    timer: 10
     ballon:
     - ballonObj: {fileID: 309645266}
       ballonCount: 100
@@ -1152,8 +1152,8 @@ MonoBehaviour:
       textString: 20
   - stageName: Stage 4
     stageObj: {fileID: 1186414838}
-    maxTimter: 15
-    timer: 15
+    maxTimter: 12
+    timer: 12
     ballon:
     - ballonObj: {fileID: 1877097488}
       ballonCount: 20
@@ -1172,17 +1172,17 @@ MonoBehaviour:
       text: {fileID: 0}
       textString: 15X3
     - ballonObj: {fileID: 1898930894}
-      ballonCount: 10
+      ballonCount: 60
       text: {fileID: 0}
-      textString: 5X2
+      textString: 60
     - ballonObj: {fileID: 464243918}
       ballonCount: 35
       text: {fileID: 0}
       textString: 7X5
   - stageName: Stage 5
     stageObj: {fileID: 714919184}
-    maxTimter: 18
-    timer: 18
+    maxTimter: 15
+    timer: 15
     ballon:
     - ballonObj: {fileID: 1432630548}
       ballonCount: 130

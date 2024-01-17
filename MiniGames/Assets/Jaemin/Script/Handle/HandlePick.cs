@@ -27,8 +27,8 @@ public class HandlePick : MonoBehaviour
     }
     void Update()
     {
-        bool isRange = handle.transform.eulerAngles.z >= targetRotate.eulerAngles.z - 20
-            && handle.transform.eulerAngles.z <= targetRotate.eulerAngles.z + 20;
+        bool isRange = handle.transform.eulerAngles.z >= targetRotate.eulerAngles.z - 25
+            && handle.transform.eulerAngles.z <= targetRotate.eulerAngles.z + 25;
         if (isRange)
         {
             isOut = true;

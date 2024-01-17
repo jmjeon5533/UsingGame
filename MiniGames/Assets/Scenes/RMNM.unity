@@ -850,6 +850,7 @@ MonoBehaviour:
   inputField: {fileID: 538686165}
   HP: {fileID: 925602630}
   userTime: {fileID: 779732811}
+  Bgm: {fileID: 0}
   ShowTime: 1.5
   taypingtime: 10
 --- !u!4 &757506153
@@ -1711,8 +1712,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 140
+  m_fontSizeBase: 140
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

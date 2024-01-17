@@ -29,6 +29,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] Sound soundObject;
     [SerializeField] Text explainText;
     [SerializeField] Text scoreText;
+    [SerializeField] AudioClip resultSFX;
     public enum SoundState
     {
         BGM,
@@ -95,10 +96,12 @@ public class SceneManager : MonoBehaviour
         // Set Time.timeScale to 0 (if needed)
         yield return new WaitForSecondsRealtime(1f);
 
+        SetAudio(resultSFX,SoundState.SFX,false,1.5f);
+
         // Fade Out
         yield return fadeObj.DOFade(0f, 0.5f).WaitForCompletion();
         scoreText.transform.DOScale(Vector3.one * 2, 1);
-        yield return scoreText.transform.DOLocalMove(Vector2.zero, 1).WaitForCompletion();
+        yield return scoreText.transform.DOLocalMove(new Vector2(400,0), 1).WaitForCompletion();
 
         yield return new WaitForSeconds(2f);
 
@@ -110,6 +113,7 @@ public class SceneManager : MonoBehaviour
 
         scoreText.transform.localScale = Vector3.one;
         Score = 0;
+        scoreText.text = "점수 : 0";
         scoreText.transform.localPosition = new Vector2(-419, 459);
         scoreText.gameObject.SetActive(false);
         // Set Time.timeScale to 0 (if needed)
@@ -133,7 +137,7 @@ public class SceneManager : MonoBehaviour
         else
             StartCoroutine(StartFade());
     }
-    public GameObject SetAudio(AudioClip audio, SoundState soundState, bool looping, float pitch = 1)
+    public GameObject SetAudio(AudioClip audio, SoundState soundState, bool looping, float pitch = 1, float volume = 1)
     {
         var sound = Instantiate(soundObject, Camera.main.transform.position, Quaternion.identity)
         .GetComponent<AudioSource>();
@@ -141,6 +145,7 @@ public class SceneManager : MonoBehaviour
         sound.clip = audio;
         sound.GetComponent<Sound>().soundState = soundState;
         sound.loop = looping;
+        sound.volume = volume;
         sound.Play();
         if (!looping) Destroy(sound.gameObject, audio.length);
         return sound.gameObject;

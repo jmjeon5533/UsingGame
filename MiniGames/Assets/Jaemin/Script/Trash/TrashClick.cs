@@ -53,7 +53,7 @@ public class TrashClick : MonoBehaviour
     }
     void ResetTimer()
     {
-        Maxtime -= 0.35f;
+        Maxtime -= 0.25f;
         curtime = Maxtime;
     }
 

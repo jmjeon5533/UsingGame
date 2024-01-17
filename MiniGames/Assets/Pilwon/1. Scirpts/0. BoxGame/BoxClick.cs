@@ -17,6 +17,7 @@ public class BoxClick : MonoBehaviour
 
     private void Click()
     {
+        if (!BoxPopGame.instance.isGameStart) return;
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -33,6 +34,7 @@ public class BoxClick : MonoBehaviour
     {
         var ballonsParent = hit.collider.gameObject.GetComponentInParent<BoxParent>();
         var clickBallon = hit.collider.gameObject.GetComponent<Box>();
+        if (clickBallon.isClick) return;
 
         isBloonCheck = true;
 
@@ -55,6 +57,7 @@ public class BoxClick : MonoBehaviour
         {
             ballonsParent.boxs.Remove(clickBallon);
             clickBallon.canvas.gameObject.SetActive(false);
+            clickBallon.isClick = true;
             Instantiate(BoxPopGame.instance.particle, clickBallon.particlePos);
             clickBallon.paper.SetActive(true);
             SceneManager.instance.AddScore(30);

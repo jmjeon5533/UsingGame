@@ -9,6 +9,7 @@ public class Box : MonoBehaviour
     public GameObject paper;
     public Transform particlePos;
     public Canvas canvas;
+    public bool isClick;
 
     private void Awake()
     {

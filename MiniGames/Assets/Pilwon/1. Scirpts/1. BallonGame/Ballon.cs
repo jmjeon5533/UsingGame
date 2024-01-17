@@ -50,7 +50,7 @@ public class Ballon : MonoBehaviour
             GameObject clone = Instantiate(BallonGameManager.instance.particle, transform.position, Quaternion.identity);
             clone.transform.SetParent(BallonGameManager.instance.particleParent.transform);
             SceneManager.instance.AddScore(30);
-            SceneManager.instance.SetAudio(BallonGameManager.instance.PungVfx, SceneManager.SoundState.SFX, false, 0.6f);
+            SceneManager.instance.SetAudio(BallonGameManager.instance.PungVfx, SceneManager.SoundState.SFX, false, 0.25f);
 
             BallonGameManager.instance.fieldSpawnCount--;
             Destroy(gameObject);

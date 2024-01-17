@@ -136,7 +136,7 @@ public class NumberManager : MonoBehaviour//Minigame
 
     void InputNumber()
     {
-        EnterNumber = int.Parse(Inputvalue.text);        
+        EnterNumber = long.Parse(Inputvalue.text);        
     }
 
     void NullEnter()
